@@ -27,7 +27,6 @@ export default class App extends Component {
   };
   handleContextMenu = (e) => {
     e.preventDefault();
-
     this.setState({
       xPos: `${e.pageX}px`,
       yPos: `${e.pageY}px`,
@@ -35,8 +34,21 @@ export default class App extends Component {
     });
   };
 
+  showSubmenu = (id) => {
+    this.setState({
+      Items: this.state.Items.map((item) => {
+        if (item.id === id) {
+          item.showSubMenu = true;
+        } else {
+          item.showSubMenu = false;
+        }
+        return item;
+      }),
+    });
+  };
+
   render() {
-    const { showMenu, xPos, yPos } = this.state;
+    const { showMenu, xPos, yPos, Items } = this.state;
     if (showMenu)
       return (
         <ul
@@ -46,7 +58,7 @@ export default class App extends Component {
             left: xPos,
           }}
         >
-          <Menu items={this.state.Items} />
+          <Menu items={Items} showSubmenu={this.showSubmenu} />
         </ul>
       );
     else return null;

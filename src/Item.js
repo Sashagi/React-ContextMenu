@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosCut, IoIosArrowDropright } from "react-icons/io";
 import { GrCopy, GrAscend, GrDescend } from "react-icons/gr";
-import { FaPaste, FaRegCommentAlt, FaLink } from "react-icons/fa";
+import { FaPaste, FaLink } from "react-icons/fa";
 import { AiFillFormatPainter } from "react-icons/ai";
 import {
   BsFileSpreadsheet,
@@ -15,49 +15,60 @@ import {
 import { IconContext } from "react-icons";
 
 export const Items = [
-  { id: 1, name: "Cut", icon: <IoIosCut /> },
-  { id: 2, name: "Copy", icon: <GrCopy /> },
+  { id: 0, name: "Cut", icon: <IoIosCut /> },
+  { id: 1, name: "Copy", icon: <GrCopy /> },
   {
-    id: 3,
+    id: 2,
     name: "Paste Options",
   },
-  { id: 4, img: [<FaPaste />, <FaPaste />, <FaPaste />, <FaPaste />] },
+  {
+    id: 3,
+    img: [
+      <FaPaste id="aa" />,
+      <FaPaste id="bb" />,
+      <FaPaste id="cc" />,
+      <FaPaste id="dd" />,
+    ],
+  },
 
   {
-    id: 5,
+    id: 4,
     name: "Insert",
     icon: <IoIosArrowDropright />,
+    showSubMenu: false,
     subitems: [
-      { id: 6, name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
-      { id: 7, name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
-      { id: 8, name: "Cells & Shift Right", icon: <BsBoxArrowRight /> },
-      { id: 9, name: "Cells & Shift Down", icon: <BsBoxArrowInDown /> },
+      { id: "a", name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
+      { id: "b", name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
+      { id: "c", name: "Cells & Shift Right", icon: <BsBoxArrowRight /> },
+      { id: "d", name: "Cells & Shift Down", icon: <BsBoxArrowInDown /> },
     ],
   },
   {
-    id: 10,
+    id: 5,
     name: "Delete",
     icon: <IoIosArrowDropright />,
+    showSubMenu: false,
     subitems: [
-      { id: 11, name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
-      { id: 12, name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
-      { id: 13, name: "Cells & Shift left", icon: <BsBoxArrowLeft /> },
-      { id: 14, name: "Cells & Shift Up", icon: <BsBoxArrowInUp /> },
+      { id: "e", name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
+      { id: "f", name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
+      { id: "g", name: "Cells & Shift left", icon: <BsBoxArrowLeft /> },
+      { id: "h", name: "Cells & Shift Up", icon: <BsBoxArrowInUp /> },
     ],
   },
-  { id: 15, name: "Clear Contents" },
+  { id: 6, name: "Clear Contents" },
   {
-    id: 16,
+    id: 7,
     name: "Sort",
     icon: <IoIosArrowDropright />,
+    showSubMenu: false,
     subitems: [
-      { id: 17, name: "Sort Ascending", icon: <GrAscend /> },
-      { id: 18, name: "Sort Descending", icon: <GrDescend /> },
-      { id: 19, name: "Custom Sort", icon: <BsArrowUpDown /> },
+      { id: "i", name: "Sort Ascending", icon: <GrAscend /> },
+      { id: "j", name: "Sort Descending", icon: <GrDescend /> },
+      { id: "k", name: "Custom Sort", icon: <BsArrowUpDown /> },
     ],
   },
-  { id: 20, name: "New Comment" },
-  { id: 21, name: "Number Format", icon: <AiFillFormatPainter /> },
-  { id: 22, name: "Hyper Link", icon: <FaLink /> },
+  { id: 8, name: "New Comment" },
+  { id: 9, name: "Number Format", icon: <AiFillFormatPainter /> },
+  { id: 10, name: "Hyper Link", icon: <FaLink /> },
 ];
 export default Items;

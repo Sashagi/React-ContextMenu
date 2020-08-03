@@ -11,18 +11,18 @@ export class MenuItem extends Component {
   // };
 
   render() {
-    const { item } = this.props;
-    const { id } = item.id;
+    const { id, icon, name, showSubMenu, subitems } = this.props.item;
+    const onMouseOver = this.props.showSubmenu.bind(this, id);
     return (
-      <div onMouseOver={this.props.showSubmenu.bind(this, id)}>
-        {item.icon}
-        {item.name}
+      <div onMouseOver={onMouseOver}>
+        {icon}
+        {name}
         {/* {item.img} */}
-        {item.showSubMenu && (
+        {showSubMenu && subitems && (
           <ul
           // style={getStyle()}
           >
-            {item.subitems.map((subitem) => (
+            {subitems.map((subitem) => (
               <div key={subitem.id}>
                 {subitem.icon}
                 {subitem.name}

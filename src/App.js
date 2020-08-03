@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Menu from "./Menu";
+import Menu from "./Menu2";
 import { Items } from "./Item";
 import "./new.css";
 

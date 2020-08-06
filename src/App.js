@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Menu from "./Menu2";
+import Menu from "./Menu";
 import { Items } from "./Item";
 import "./new.css";
 
@@ -8,8 +8,6 @@ export default class App extends Component {
     super();
     this.state = {
       Items,
-      xPos: "0px",
-      yPos: "0px",
       showMenu: false,
     };
   }
@@ -28,10 +26,31 @@ export default class App extends Component {
   handleContextMenu = (e) => {
     e.preventDefault();
     this.setState({
-      xPos: `${e.pageX}px`,
-      yPos: `${e.pageY}px`,
       showMenu: true,
     });
+    const clickX = e.clientX;
+    const clickY = e.clientY;
+    const screenW = window.innerWidth;
+    const screenH = window.innerHeight;
+    const menuW = this.root.offsetWidth;
+    const menuH = this.root.offsetHeight;
+    const right = screenW - clickX > menuW;
+    const left = !right;
+    const bottom = screenH - clickY > menuH;
+    const top = !bottom;
+
+    if (right) {
+      this.root.style.left = `${clickX}px`;
+    }
+    if (left) {
+      this.root.style.left = `${clickX - menuW}px`;
+    }
+    if (bottom) {
+      this.root.style.top = `${clickY}px`;
+    }
+    if (top) {
+      this.root.style.top = `${clickY - menuH}px`;
+    }
   };
 
   showSubmenu = (id) => {
@@ -48,15 +67,18 @@ export default class App extends Component {
   };
 
   render() {
-    const { showMenu, xPos, yPos, Items } = this.state;
+    const { showMenu, Items } = this.state;
     if (showMenu)
       return (
         <ul
-          className="menu"
-          style={{
-            top: yPos,
-            left: xPos,
+          ref={(ref) => {
+            this.root = ref;
           }}
+          className="menu"
+          // style={{
+          //   top: this.clickX,
+          //   left: this.clickY,
+          // }}
         >
           <Menu items={Items} showSubmenu={this.showSubmenu} />
         </ul>

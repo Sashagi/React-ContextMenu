@@ -23,7 +23,7 @@ export const Items = [
   },
   {
     id: 3,
-    img: [
+    name: [
       <FaPaste id="aa" />,
       <FaPaste id="bb" />,
       <FaPaste id="cc" />,
@@ -35,8 +35,8 @@ export const Items = [
     id: 4,
     name: "Insert",
     icon: <IoIosArrowDropright />,
-    showSubMenu: false,
-    subitems: [
+    // showSubMenu: false,
+    items: [
       { id: "a", name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
       { id: "b", name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
       { id: "c", name: "Cells & Shift Right", icon: <BsBoxArrowRight /> },
@@ -47,8 +47,8 @@ export const Items = [
     id: 5,
     name: "Delete",
     icon: <IoIosArrowDropright />,
-    showSubMenu: false,
-    subitems: [
+    // showSubMenu: false,
+    items: [
       { id: "e", name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
       { id: "f", name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
       { id: "g", name: "Cells & Shift left", icon: <BsBoxArrowLeft /> },
@@ -60,8 +60,8 @@ export const Items = [
     id: 7,
     name: "Sort",
     icon: <IoIosArrowDropright />,
-    showSubMenu: false,
-    subitems: [
+    // showSubMenu: false,
+    items: [
       { id: "i", name: "Sort Ascending", icon: <GrAscend /> },
       { id: "j", name: "Sort Descending", icon: <GrDescend /> },
       { id: "k", name: "Custom Sort", icon: <BsArrowUpDown /> },

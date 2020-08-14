@@ -1,88 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Menu from "./Menu";
 import { Items } from "./Item";
-import "./new.css";
+import "./App.css";
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      Items,
-      showMenu: false,
-    };
-  }
+function App() {
+  const [state, setState] = useState({ openAt: undefined });
 
-  componentDidMount() {
-    document.addEventListener("click", this.handleClick);
-    document.addEventListener("contextmenu", this.handleContextMenu);
-  }
-  componentWillUnmount() {
-    document.removeEventListener("click", this.handleClick);
-    document.removeEventListener("contextmenu", this.handleContextMenu);
-  }
-  handleClick = (e) => {
-    if (this.state.showMenu) this.setState({ showMenu: false });
-  };
-  handleContextMenu = (e) => {
-    e.preventDefault();
-    this.setState({
-      showMenu: true,
-    });
-    const clickX = e.clientX;
-    const clickY = e.clientY;
-    const screenW = window.innerWidth;
-    const screenH = window.innerHeight;
-    const menuW = this.root.offsetWidth;
-    const menuH = this.root.offsetHeight;
-    const right = screenW - clickX > menuW;
-    const left = !right;
-    const bottom = screenH - clickY > menuH;
-    const top = !bottom;
-
-    if (right) {
-      this.root.style.left = `${clickX}px`;
-    }
-    if (left) {
-      this.root.style.left = `${clickX - menuW}px`;
-    }
-    if (bottom) {
-      this.root.style.top = `${clickY}px`;
-    }
-    if (top) {
-      this.root.style.top = `${clickY - menuH}px`;
+  const handleClick = (e) => {
+    if (e.nativeEvent.which === 1) {
+      setState({ ...state, openAt: undefined });
+    } else if (e.nativeEvent.which === 3) {
+      e.preventDefault();
+      setState({ ...state, openAt: { left: e.clientX, top: e.clientY } });
     }
   };
 
-  showSubmenu = (id) => {
-    this.setState({
-      Items: this.state.Items.map((item) => {
-        if (item.id === id) {
-          item.showSubMenu = true;
-        } else {
-          item.showSubMenu = false;
-        }
-        return item;
-      }),
-    });
-  };
-
-  render() {
-    const { showMenu, Items } = this.state;
-    if (showMenu)
-      return (
-        <ul
-          ref={(ref) => {
-            this.root = ref;
-          }}
-          className="menu"
-          // style={{
-          //   top: this.clickX,
-          //   left: this.clickY,
-          // }}
-        >
-          <Menu items={Items} showSubmenu={this.showSubmenu} />
-        </ul>
-      );
-    else return null;
-  }
+  return (
+    <div className="App" onClick={handleClick} onContextMenu={handleClick}>
+      <div id="sheet">
+        {state.openAt && <Menu items={Items} openAt={state.openAt} />}
+        <div id="status-bar">Building a context menu in react</div>
+      </div>
+    </div>
+  );
 }
+
+export default App;

@@ -1,0 +1,49 @@
+div.menu {
+  position: absolute;
+}
+
+#sheet {
+  background: bisque;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.menu {
+  border: 1px solid gray;
+  width: 150px;
+  height: max-content;
+}
+.menu-item {
+  padding: 6.2px 10px;
+  background-color: white;
+
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #4d5156;
+  white-space: nowrap;
+}
+svg {
+  margin: 2px;
+  float: left;
+  height: auto;
+  vertical-align: top;
+}
+
+.menu-item:nth-child(5) > svg {
+  float: right;
+}
+.menu-item:nth-child(6) > svg {
+  float: right;
+}
+.menu-item:nth-child(8) > svg {
+  float: right;
+}
+
+.menu-item:nth-child(4) svg {
+  width: 12%;
+  padding-left: 10px;
+  text-align: center;
+  float: none;
+}

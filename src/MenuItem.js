@@ -1,38 +1,44 @@
-import React, { Component } from "react";
+import React, { useRef } from "react";
+import Menu from "./Menu";
 
-export class MenuItem extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-  // getStyle = () => {
-  //   return {
-  //     display: this.props.item.showSubMenu? "block":"none"
-  //   };
-  // };
+//
+// A menu item renders a name. It may have a list sub items, which should open
+// when the user intends to (by mousing over).
+//
+export default function (props) {
+  const { data, active, setActive, submenuDirection } = props;
 
-  render() {
-    const { id, icon, name, showSubMenu, subitems } = this.props.item;
-    const onMouseOver = this.props.showSubmenu.bind(this, id);
-    return (
-      <div onMouseOver={onMouseOver}>
-        {icon}
-        {name}
-        {/* {item.img} */}
-        {showSubMenu && subitems && (
-          <ul
-          // style={getStyle()}
-          >
-            {subitems.map((subitem) => (
-              <div key={subitem.id}>
-                {subitem.icon}
-                {subitem.name}
-              </div>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-  }
+  const style = { backgroundColor: active ? "#e4e6e8" : "white" };
+
+  const ref = useRef(null);
+  const openAt = () => {
+    if (ref.current && submenuDirection === "right") {
+      const top = ref.current.offsetTop;
+      const left = ref.current.offsetLeft + ref.current.clientWidth;
+      return { top, left };
+    }
+    if (ref.current && submenuDirection === "left") {
+      const top = ref.current.offsetTop;
+      const left = ref.current.offsetLeft - ref.current.clientWidth;
+      console.log(left);
+      return { top, left };
+    }
+    return undefined;
+  };
+
+  return (
+    <div
+      className="menu-item"
+      style={style}
+      ref={ref}
+      onMouseEnter={() => setActive()}
+    >
+      {data.name}
+      {data.icon}
+
+      {active && openAt() && data.items && (
+        <Menu openAt={openAt()} items={data.items} />
+      )}
+    </div>
+  );
 }
-
-export default MenuItem;

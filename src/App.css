@@ -41,9 +41,20 @@ svg {
   float: right;
 }
 
-.menu-item:nth-child(4) svg {
-  width: 12%;
-  padding-left: 10px;
-  text-align: center;
+.float-none {
   float: none;
+  width: 15px;
+  padding-left: 10px;
+  /* pointer-events: none; */
+}
+div:nth-child(4) {
+  border-bottom: 1px solid #eeeeee;
+}
+
+div:nth-child(7) {
+  border-bottom: 1px solid #eeeeee;
+}
+
+.float-none:hover {
+  background-color: #fff;
 }

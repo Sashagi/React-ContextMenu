@@ -12,11 +12,10 @@ import {
   BsBoxArrowLeft,
   BsArrowUpDown,
 } from "react-icons/bs";
-import { IconContext } from "react-icons";
 
 export const Items = [
   { id: 0, name: "Cut", icon: <IoIosCut /> },
-  { id: 1, name: "Copy", icon: <GrCopy /> },
+  { id: 1, name: "Copy", icon: <GrCopy className="hover" /> },
   {
     id: 2,
     name: "Paste Options",
@@ -24,10 +23,10 @@ export const Items = [
   {
     id: 3,
     name: [
-      <FaPaste id="aa" />,
-      <FaPaste id="bb" />,
-      <FaPaste id="cc" />,
-      <FaPaste id="dd" />,
+      <FaPaste id="aa" className="float-none" />,
+      <FaPaste id="bb" className="float-none" />,
+      <FaPaste id="cc" className="float-none" />,
+      <FaPaste id="dd" className="float-none" />,
     ],
   },
 
@@ -39,8 +38,16 @@ export const Items = [
     items: [
       { id: "a", name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
       { id: "b", name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
-      { id: "c", name: "Cells & Shift Right", icon: <BsBoxArrowRight /> },
-      { id: "d", name: "Cells & Shift Down", icon: <BsBoxArrowInDown /> },
+      {
+        id: "c",
+        name: "Cells & Shift Right",
+        icon: <BsBoxArrowRight />,
+      },
+      {
+        id: "d",
+        name: "Cells & Shift Down",
+        icon: <BsBoxArrowInDown />,
+      },
     ],
   },
   {
@@ -52,7 +59,11 @@ export const Items = [
       { id: "e", name: "Sheet Rows", icon: <BsFileSpreadsheet /> },
       { id: "f", name: "Sheet Columns", icon: <BsLayoutThreeColumns /> },
       { id: "g", name: "Cells & Shift left", icon: <BsBoxArrowLeft /> },
-      { id: "h", name: "Cells & Shift Up", icon: <BsBoxArrowInUp /> },
+      {
+        id: "h",
+        name: "Cells & Shift Up",
+        icon: <BsBoxArrowInUp />,
+      },
     ],
   },
   { id: 6, name: "Clear Contents" },
